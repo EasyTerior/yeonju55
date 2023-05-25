@@ -39,15 +39,34 @@
 <title>updateForm.do</title>
 </head>
 <body>
-<section class="main">
+<main class="main">
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<jsp:include page="../common/submenu.jsp"></jsp:include>
 	
+	<section class="fixed-top container-fluid overflow-auto" style="height:100%;margin:137px 0 0;padding:56px 0 0 100px;">
 	
-	<div class="container-fluid">
-		<h2>Spring MVC 03 - updateForm.do</h2>
-		<div class="card ">
-			<div class="card-header"><h3 class="text-center">회원 정보 수정</h3></div>
+	<div class="container-fluid" style="min-height:100vh;margin-bottom: 200px;">
+		<div class="container-fluid">
+		<h2 style="text-align:center">마이 페이지</h2>
+		<br>
+			<div style="border: 1px solid red; display:flex; justify-content: center; text-align:center;"> 
+			
+			<div style="border: 1px solid blue; height: 700px; width: 30%;">
+				<img style="width:250px; height:250px" src="resources/images/common/person.png"/ >
+				<p><b>000님 환영합니다.</b></p>
+				<br>
+				
+				<ul>
+				  <li><a href="#">개인정보 수정</a></li>
+				  <li><a href="#">비밀번호 변경</a></li>
+				  <li><a href="#">저장한 이미지 확인</a></li>
+				  <li><a href="#">취향 결과 확인</a></li>
+				</ul> 
+			</div>
+
+		<div class="card " style=" width:70%">
+			
+			<div class="card-header"><h3 class="text-center">개인 정보 수정</h3></div>
 			<div class="card-body">
 				<form action="update.do" method="POST" class="form container">
 					<!-- CSRF token -->
@@ -140,9 +159,12 @@
 			</div>
 			<div class="card-footer">Panel footer</div>
 		</div>
+			</div>
 	</div>
+	</div>
+	</section>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-</section>
+</main>
 <!-- The Modal -->
 <div class="modal fade" id="myModal"><!-- animation : fade -->
   <div class="modal-dialog">
