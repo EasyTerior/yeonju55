@@ -61,7 +61,9 @@
 				  <li><a href="#">비밀번호 변경</a></li>
 				  <li><a href="#">저장한 이미지 확인</a></li>
 				  <li><a href="#">취향 결과 확인</a></li>
-				</ul> 
+				  <li><a href="#">취향 결과 확인</a></li>
+				  <li><a href="#">취향 결과 확인</a></li>
+				</ul>
 			</div>
 
 		<div class="card " style=" width:70%">
