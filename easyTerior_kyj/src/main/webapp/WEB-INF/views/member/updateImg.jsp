@@ -67,7 +67,7 @@
 
 		<div class="card " style=" width:70%">
 			
-			<div class="card-header"><h3 class="text-center">개인 정보 수정</h3></div>
+			<div class="card-header"><h3 class="text-center">저장한 이미지 확인</h3></div>
 			<div class="card-body">
 				<form action="update.do" method="POST" class="form container">
 					<!-- CSRF token -->
@@ -76,86 +76,20 @@
 					<input type="hidden" id="memPassword" name="memPassword" /> <!-- memPassword1와 memPassword2가 일치해야만이 memPassword가 될 것 -->
 					<table class="table table-bordered text-center">
 						<tbody>
-						<!--  
+						
+						<!-- 
 							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memID">사용자 ID</label></th>
+								<th class="align-middle" style="width:150px;"><label for="memPassword1">비밀번호</label></th>
 								<td class="align-middle">
-									${ memResult.memID }
+									<input type="password" onkeyup="passwordCheck()" name=memPassword1 id="memPassword1" class="form-control" maxlength=20  required="required" />
 								</td>
 							</tr>
 							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memPassword1">사용자 비밀번호</label></th>
+								<th class="align-middle" style="width:150px;"><label for="memPassword2">비밀번호 확인</label></th>
 								<td class="align-middle">
-									<input type="password" onkeyup="passwordCheck()" name=memPassword1 id="memPassword1" class="form-control" maxlength=20 placeholder="비밀번호는 8~20자 미만으로 입력 가능하며 숫자와 소문자와 대문자의 조합으로 만들어주세요" required="required" />
-								</td>
-							</tr>
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memPassword2">사용자 비밀번호 확인</label></th>
-								<td class="align-middle">
-									<input type="password" onkeyup="passwordCheck()" name=memPassword2 id="memPassword2" class="form-control" maxlength=20 placeholder="비밀번호는 위와 동일해야 합니다." required="required" />
-								</td>
-							</tr>-->
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memNickname">닉네임</label></th>
-								<td class="align-middle">
-									<input type="text" name=memNickname id="memNickname" value="${ memResult.memNickname }" class="form-control" maxlength=20  placeholder="닉네임을 입력하세요." required="required" />
-								</td>
-							</tr>
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memPhone">핸드폰 번호</label></th>
-								<td class="align-middle">
-									<input type="number" name=memPhone id="memPhone" value="${ memResult.memPhone }" class="form-control" placeholder="핸드폰 번호를 입력하세요." required="required" />
-								</td>
-							</tr>
-							
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memEmail">이메일</label></th>
-								<td class="align-middle">
-									<input type="email" name=memEmail id="memEmail" value="${ memResult.memEmail }" class="form-control" maxlength=150 placeholder="이메일을 입력하세요." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="required" />
-								</td>
-							</tr>
-							
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memAddress">주소</label></th>
-								<td class="align-middle">
-									<input type="email" name=memAddress id="memAddress" value="${ memResult.memAddress }" class="form-control" maxlength=150 placeholder="주소를 입력하세요." required="required" />
-								</td>
-							</tr>
-							
-							<!-- <tr>
-								<th class="align-middle" style="width:150px;"><label for="memGender">성별</label></th>
-								<td class="align-middle">
-									<div class="form-group text-center m-auto">
-										<c:if test="${memResult.memGender eq '남자'}">
-										<div class="btn-group gender-group" data-toggle="buttons" role="group">
-											<label for="male" class="btn btn-sm btn-primary active">
-												<input type="radio" name="memGender" id="male" class="btn-check" value="남자" checked="checked"  autocomplete="off" />
-												<span>남자</span>
-											</label>
-											
-											<label for="female" class="btn btn-sm btn-primary">
-												<input type="radio" name="memGender" id="female" class="btn-check" value="여자" autocomplete="off" />
-												<span>여자</span>
-											</label>
-										</div>
-										</c:if>
-										<c:if test="${memResult.memGender eq '여자'}">
-										<div class="btn-group gender-group" data-toggle="buttons" role="group">
-											<label for="male" class="btn btn-sm btn-primary">
-												<input type="radio" name="memGender" id="male" class="btn-check" value="남자" autocomplete="off" />
-												<span>남자</span>
-											</label>
-											
-											<label for="female" class="btn btn-sm btn-primary active">
-												<input type="radio" name="memGender" id="female" class="btn-check" value="여자" checked="checked" autocomplete="off" />
-												<span>여자</span>
-											</label>
-										</div>
-										</c:if>
-									</div>
+									<input type="password" onkeyup="passwordCheck()" name=memPassword2 id="memPassword2" class="form-control" maxlength=20 required="required" />
 								</td>
 							</tr> -->
-							
 						</tbody>
 						<tfoot>
 							<tr>

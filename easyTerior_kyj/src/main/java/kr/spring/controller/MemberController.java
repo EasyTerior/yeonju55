@@ -121,11 +121,30 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	// 회원정보 수정 form으로 이동 기능 : 요청 URL - /updateForm.do
+	// 개인정보 수정 form으로 이동 기능 : 요청 URL - /updateForm.do
 	@RequestMapping("/updateForm.do")
 	public String updateForm() {
 		return "member/updateForm";
 	}
+	
+	// 비밀번호 변경 form으로 이동 기능 : 요청 URL - /updatePW.do
+	@RequestMapping("/updatePW.do")
+	public String updatePW() {
+		return "member/updatePW";
+	}
+		
+	// 저장한 이미지 확인 form으로 이동 기능 : 요청 URL - /updateImg.do
+	@RequestMapping("/updateImg.do")
+	public String updateImg() {
+		return "member/updateImg";
+	}		
+
+	// 취향 결과 확인 form으로 이동 기능 : 요청 URL - /updateResult.do
+	@RequestMapping("/updateResult.do")
+	public String updateResult() {
+		return "member/updateResult";
+	}		
+
 
 	// 문제 : 회원의 정보를 수정하기. 아이디가 일치하는 회원의 비밀번호, 이름, 성별, 나이, 이메일을 변경하기. 회원정보 수정 이후
 	// index.jsp로 이동.

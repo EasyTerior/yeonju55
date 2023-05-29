@@ -2,7 +2,7 @@
 CREATE TABLE member(
 	memIdx INT,
 	memID VARCHAR(50) NOT NULL,
-	memPassword VARCHAR(50) NOT NULL,
+	memPassword VARCHAR(150) NOT NULL,
 	memName VARCHAR(50) NOT NULL,
 	memNickname VARCHAR(50),
 	memPhone VARCHAR(50),
