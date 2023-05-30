@@ -41,6 +41,8 @@
 			}
 			$("#myModal").modal("show");
 		}
+		
+		$(".updateList .on").addClass("fw-bold");
 	});
 	
 </script>
@@ -68,9 +70,9 @@
 							<p class="mt-3 mb-4 text-center fs-4 fw-bold ">${memResult.memName}님
 								환영합니다.</p>
 							<ul class="updateList m-auto" style="width: 200px;">
-								<li class="mb-3 ps-2 on"><a href="updateForm.do"
+								<li class="mb-3 ps-2"><a href="updateForm.do"
 									class="link-dark text-decoration-none">개인정보 수정</a></li>
-								<li class="mb-3 ps-2"><a href="updatePWForm.do"
+								<li class="mb-3 ps-2 on"><a href="updatePWForm.do"
 									class="link-dark text-decoration-none">비밀번호 변경</a></li>
 								<li class="mb-3 ps-2"><a href="updateImg.do"
 									class="link-dark text-decoration-none">저장한 이미지 확인</a></li>

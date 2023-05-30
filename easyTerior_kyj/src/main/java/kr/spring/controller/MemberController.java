@@ -169,15 +169,15 @@ public class MemberController {
 			mem.setMemPassword(encyPw);
 			// 실질 DB에 비밀번호 넣어서 update하기
 			int cnt = memberMapper.updatePW(mem);
-			if (cnt == 1) { // SQL 실행문 1문이 잘 됨. == 회원정보수정 성공
+			if (cnt == 1) { // SQL 실행문 1문이 잘 됨. == 비밀번호수정 성공
 				session.setAttribute("memResult", mem);
 				rttr.addFlashAttribute("msgType", "성공 메세지");
-				rttr.addFlashAttribute("msg", "성공적으로 회원정보가 수정되었습니다.");
+				rttr.addFlashAttribute("msg", "성공적으로 비밀번호가 변경되었습니다.");
 				return "redirect:/";
 			}else {
-				// 회원 정보 수정 실패
+				// 비밀번호 수정 실패
 				rttr.addFlashAttribute("msgType", "실패 메세지");
-				rttr.addFlashAttribute("msg", "회원 정보 수정이 실패하셨습니다. 다시 시도해주세요.");
+				rttr.addFlashAttribute("msg", "비밀번호 변경에 실패하셨습니다. 다시 시도해주세요.");
 				return "redirect:/updateForm.do"; // member/updateForm
 			} 
 		}	
