@@ -7,8 +7,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="resources/css/mypage.css">
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+
+<script>
+//주소 채우기
+function addressFill(){
+	let add1 = $("#address").val();
+	let add2 = $("#detailAddress").val();
+	let add3 = $("#extraAddress").val();
+	let fullAddress = add1+ " " + add2 + " " + add3;
+	$("#memAddress").val(fullAddress);
+	
+}
+</script>
 <script type="text/javascript">
 	// 비밀번호 동일 여부 확인
 	function passwordCheck(){
@@ -36,6 +50,7 @@
 	});
 	
 </script>
+
 <title>updateForm.do</title>
 </head>
 <body>
@@ -49,16 +64,19 @@
 		<div class="container-fluid">
 		<h2 style="text-align:center">마이 페이지</h2>
 		<br>
-			<div style="border: 1px solid red; display:flex; justify-content: center; text-align:center;"> 
+			<div style="display:flex; justify-content: center; text-align:center;"> 
 			
-			<div style="border: 1px solid blue; height: 700px; width: 30%;">
+			<div style="height: 700px; width: 30%;">
 				<img style="width:250px; height:250px" src="resources/images/common/person.png"/ >
-				<p><b>000님 환영합니다.</b></p>
+				<input type="hidden" name=memName id="memName" value="${ memResult.memName }" />
+				
+				<p><b>${memResult.memName}님 환영합니다.</b></p>
+				
 				<br>
 				
-				<ul>
-				  <li><a href="updateForm.do">개인정보 수정</a></li>
-				  <li><a href="updatePW.do">비밀번호 변경</a></li>
+				<ul class="updateli" >
+				  <li><a href="updateForm.do"><b>개인정보 수정</b></a></li>
+				  <li><a href="updatePWForm.do">비밀번호 변경</a></li>
 				  <li><a href="updateImg.do">저장한 이미지 확인</a></li>
 				  <li><a href="updateResult.do">취향 결과 확인</a></li>
 
@@ -71,30 +89,27 @@
 			<div class="card-body">
 				<form action="update.do" method="POST" class="form container">
 					<!-- CSRF token -->
-					<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<input type="hidden" id="memID" name="memID" value="${ memResult.memID }" />
 					<input type="hidden" id="memPassword" name="memPassword" /> <!-- memPassword1와 memPassword2가 일치해야만이 memPassword가 될 것 -->
+					<input type="hidden" name=memName id="memName" value="${ memResult.memName }" />
+					
 					<table class="table table-bordered text-center">
 						<tbody>
-						<!--  
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memID">사용자 ID</label></th>
-								<td class="align-middle">
-									${ memResult.memID }
-								</td>
-							</tr>
 							<tr>
 								<th class="align-middle" style="width:150px;"><label for="memPassword1">사용자 비밀번호</label></th>
 								<td class="align-middle">
-									<input type="password" onkeyup="passwordCheck()" name=memPassword1 id="memPassword1" class="form-control" maxlength=20 placeholder="비밀번호는 8~20자 미만으로 입력 가능하며 숫자와 소문자와 대문자의 조합으로 만들어주세요" required="required" />
+									<input type="password" onkeyup="passwordCheck()" name=memPassword1 id="memPassword1" value=""class="form-control" maxlength=20 placeholder="비밀번호를 입력하세요."  />
 								</td>
 							</tr>
 							<tr>
 								<th class="align-middle" style="width:150px;"><label for="memPassword2">사용자 비밀번호 확인</label></th>
 								<td class="align-middle">
-									<input type="password" onkeyup="passwordCheck()" name=memPassword2 id="memPassword2" class="form-control" maxlength=20 placeholder="비밀번호는 위와 동일해야 합니다." required="required" />
+									<input type="password" onkeyup="passwordCheck()" name=memPassword2 id="memPassword2" class="form-control" maxlength=20 placeholder="비밀번호를 확인하세요."  />
 								</td>
-							</tr>-->
+							</tr>
+							
+						
 							<tr>
 								<th class="align-middle" style="width:150px;"><label for="memNickname">닉네임</label></th>
 								<td class="align-middle">
@@ -104,7 +119,7 @@
 							<tr>
 								<th class="align-middle" style="width:150px;"><label for="memPhone">핸드폰 번호</label></th>
 								<td class="align-middle">
-									<input type="number" name=memPhone id="memPhone" value="${ memResult.memPhone }" class="form-control" placeholder="핸드폰 번호를 입력하세요." required="required" />
+									<input type="text" name=memPhone id="memPhone" value="${ memResult.memPhone }" class="form-control" placeholder="핸드폰 번호를 입력하세요." required="required" />
 								</td>
 							</tr>
 							
@@ -118,58 +133,55 @@
 							<tr>
 								<th class="align-middle" style="width:150px;"><label for="memAddress">주소</label></th>
 								<td class="align-middle">
-									<input type="email" name=memAddress id="memAddress" value="${ memResult.memAddress }" class="form-control" maxlength=150 placeholder="주소를 입력하세요." required="required" />
+									<input type="text" readonly="readonly" name=memAddress id="memAddress" value="${ memResult.memAddress }" class="form-control" maxlength=150 placeholder="주소를 입력하세요." required="required" />
 								</td>
 							</tr>
 							
-							<!-- <tr>
-								<th class="align-middle" style="width:150px;"><label for="memGender">성별</label></th>
-								<td class="align-middle">
-									<div class="form-group text-center m-auto">
-										<c:if test="${memResult.memGender eq '남자'}">
-										<div class="btn-group gender-group" data-toggle="buttons" role="group">
-											<label for="male" class="btn btn-sm btn-primary active">
-												<input type="radio" name="memGender" id="male" class="btn-check" value="남자" checked="checked"  autocomplete="off" />
-												<span>남자</span>
-											</label>
-											
-											<label for="female" class="btn btn-sm btn-primary">
-												<input type="radio" name="memGender" id="female" class="btn-check" value="여자" autocomplete="off" />
-												<span>여자</span>
-											</label>
-										</div>
-										</c:if>
-										<c:if test="${memResult.memGender eq '여자'}">
-										<div class="btn-group gender-group" data-toggle="buttons" role="group">
-											<label for="male" class="btn btn-sm btn-primary">
-												<input type="radio" name="memGender" id="male" class="btn-check" value="남자" autocomplete="off" />
-												<span>남자</span>
-											</label>
-											
-											<label for="female" class="btn btn-sm btn-primary active">
-												<input type="radio" name="memGender" id="female" class="btn-check" value="여자" checked="checked" autocomplete="off" />
-												<span>여자</span>
-											</label>
-										</div>
-										</c:if>
-									</div>
-								</td>
-							</tr> -->
+							<tr>
+							<th class="align-middle" style="width:150px;"><label for="memAddress">주소 변경하기</label></th>
+							<td><div class="row mb-3">
+					    
+					    <input type="hidden" name="memAddress" id="memAddress" />
+					    <div class="col-sm-10">
+					    	<div class="row mb-2">
+					    		<div class="col-auto">
+					    			<button type="button" class="btn btn-sm btn-light align-top" onclick="addressFullFill()">우편번호 찾기</button>
+					    		</div>
+					    		<div class="col-auto">
+					    			<input type="text" id="postcode" class="form-control"  placeholder="우편번호" />
+					    		</div>
+					    	</div>
+					    	<div class="row">
+					    		<div class="col-auto">
+					    			<input type="text" onchange="addressFill()" id="address" class="form-control" style="width: 300px;" placeholder="주소"  />
+					    		</div>
+					    		<div class="col-auto">
+					    			<input type="text" onchange="addressFill()" id="detailAddress" class="form-control" placeholder="상세주소" />
+					    		</div>
+					    		<div class="col-auto">
+					    			<input type="text" "
+    width: 150px;
+" id="extraAddress" class="form-control" placeholder="참고항목" />
+					    		</div>
+					    	</div>
+					    </div>
+					</div>
+					</td>
+							</tr>
 							
 						</tbody>
 						<tfoot>
 							<tr>
 								<td colspan="2" class="pull-right">
 									<p id="passMessage" class="text-center fw-bold"></p>
-									<button type="submit" class="btn btn-sm btn-primary">수정하기</button>
-									<button type="reset" class="btn btn-sm btn-warning">취소하기</button>
+									<button type="submit" class="btn btn-info">수정하기</button>
+									<button type="reset" class="btn btn-secondary">취소하기</button>
 								</td>
 							</tr>
 						</tfoot>
 					</table>
 				</form>
 			</div>
-			<div class="card-footer">Panel footer</div>
 		</div>
 			</div>
 	</div>
@@ -201,5 +213,56 @@
     </div>
   </div>
 </div>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function addressFullFill() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("detailAddress").focus();
+            }
+        }).open();
+    }
+</script>
 </body>
 </html>

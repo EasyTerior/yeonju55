@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="resources/css/mypage.css">
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script type="text/javascript">
@@ -36,7 +38,7 @@
 	});
 	
 </script>
-<title>updateForm.do</title>
+<title>updatePWForm.do</title>
 </head>
 <body>
 <main class="main">
@@ -49,16 +51,17 @@
 		<div class="container-fluid">
 		<h2 style="text-align:center">마이 페이지</h2>
 		<br>
-			<div style="border: 1px solid red; display:flex; justify-content: center; text-align:center;"> 
+			<div style="display:flex; justify-content: center; text-align:center;"> 
 			
-			<div style="border: 1px solid blue; height: 700px; width: 30%;">
+			<div style="height: 700px; width: 30%;">
 				<img style="width:250px; height:250px" src="resources/images/common/person.png"/ >
-				<p><b>000님 환영합니다.</b></p>
+				
+				<p><b>${memResult.memName}님 환영합니다.</b></p>
 				<br>
 				
-				<ul>
+				<ul class="updateli">
 				  <li><a href="updateForm.do">개인정보 수정</a></li>
-				  <li><a href="updatePW.do">비밀번호 변경</a></li>
+				  <li><a href="updatePWForm.do"><b>비밀번호 변경</b></a></li>
 				  <li><a href="updateImg.do">저장한 이미지 확인</a></li>
 				  <li><a href="updateResult.do">취향 결과 확인</a></li>
 
@@ -93,16 +96,16 @@
 						<tfoot>
 							<tr>
 								<td colspan="2" class="pull-right">
-									<p id="passMessage" class="text-center fw-bold"></p>
-									<button type="submit" class="btn btn-sm btn-primary">수정하기</button>
-									<button type="reset" class="btn btn-sm btn-warning">취소하기</button>
+									<p id="passMessage" class="text-center fw-bold"></p>	
+									<button type="submit" class="btn btn-info">수정하기</button>
+									<button type="reset" class="btn btn-secondary">취소하기</button>
 								</td>
 							</tr>
 						</tfoot>
 					</table>
 				</form>
 			</div>
-			<div class="card-footer">Panel footer</div>
+			
 		</div>
 			</div>
 	</div>

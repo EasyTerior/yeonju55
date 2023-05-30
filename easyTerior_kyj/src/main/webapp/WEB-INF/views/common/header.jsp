@@ -38,7 +38,7 @@
       			<img alt="${memResult.memProfile}" src="${ contextPath }/resources/profile/${memResult.memProfile}" class="rounded-circle align-middle" style="width:50px;height:50px;" />
       		</c:if>
       		<c:if test="${ memResult.memProfile eq ''}">
-      			<img alt="${memResult.memProfile}" src="${ contextPath }/resources/images/person.png" class="rounded-circle align-middle" style="width:50px;height:50px;" />
+      			<img alt="${memResult.memProfile}" src="${ contextPath }/resources/images/common/person.png" class="rounded-circle align-middle" style="width:50px;height:50px;" />
       		</c:if>
       		<span class="navbar-text align-middle"><strong class="px-2">${ memResult.memName }</strong>님 안녕하세요!</span>
       	</li>

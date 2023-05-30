@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+
+	a{
+		text-decoration-line: none;
+		text-decoration:none; 
+	}
+	
+	a:link{
+		color: black;
+	}
+	
+	a:visited{
+		color: black;
+	}
+	a:hover {
+  		color : blue;
+	}
+	a:active {
+  		color : green;
+	}
+	
+	.updateli{
+		text-align:left;
+	}

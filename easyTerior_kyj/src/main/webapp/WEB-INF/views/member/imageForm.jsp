@@ -24,8 +24,13 @@
 <title>imageForm.do</title>
 </head>
 <body>
-<section class="main">
+
+<main class="main">
 	<jsp:include page="../common/header.jsp"></jsp:include>
+	<jsp:include page="../common/submenu.jsp"></jsp:include>
+	
+	<section class="fixed-top container-fluid overflow-auto" style="height:100%;margin:137px 0 0;padding:56px 0 0 100px;">
+	
 	<div class="container-fluid">
 		<h2>Spring MVC 03 - imageForm.do</h2>
 		<div class="card ">
@@ -66,6 +71,8 @@
 		</div>
 	</div>
 </section>
+
+</main>
 <!-- The Modal -->
 <div class="modal fade" id="myModal"><!-- animation : fade -->
   <div class="modal-dialog">

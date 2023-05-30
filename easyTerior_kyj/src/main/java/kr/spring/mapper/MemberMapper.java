@@ -21,4 +21,5 @@ public interface MemberMapper {
 	public Member getMember(String memID);
 	
 	
+	
 }
