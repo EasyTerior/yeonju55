@@ -7,23 +7,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="resources/css/mypage.css">
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-
-<script>
-//주소 채우기
-function addressFill(){
-	let add1 = $("#address").val();
-	let add2 = $("#detailAddress").val();
-	let add3 = $("#extraAddress").val();
-	let fullAddress = add1+ " " + add2 + " " + add3;
-	$("#memAddress").val(fullAddress);
-	
-}
-</script>
 <script type="text/javascript">
+	//주소 채우기
+	function addressFill(){
+		let add1 = $("#address").val();
+		let add2 = $("#detailAddress").val();
+		let add3 = $("#extraAddress").val();
+		let fullAddress = add1+ " " + add2 + " " + add3;
+		$("#memAddress").val(fullAddress);
+		
+	}
+
 	// 비밀번호 동일 여부 확인
 	function passwordCheck(){
 		let memPassword1 = $("#memPassword1").val();
@@ -47,148 +43,113 @@ function addressFill(){
 			}
 			$("#myModal").modal("show");
 		}
+		
+		$(".updateList .on").addClass("fw-bold");
 	});
 	
 </script>
-
 <title>updateForm.do</title>
 </head>
 <body>
 <main class="main">
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<jsp:include page="../common/submenu.jsp"></jsp:include>
-	
 	<section class="fixed-top container-fluid overflow-auto" style="height:100%;margin:137px 0 0;padding:56px 0 0 100px;">
-	
 	<div class="container-fluid" style="min-height:100vh;margin-bottom: 200px;">
 		<div class="container-fluid">
-		<h2 style="text-align:center">마이 페이지</h2>
-		<br>
-			<div style="display:flex; justify-content: center; text-align:center;"> 
-			
-			<div style="height: 700px; width: 30%;">
-				<img style="width:250px; height:250px" src="resources/images/common/person.png"/ >
-				<input type="hidden" name=memName id="memName" value="${ memResult.memName }" />
-				
-				<p><b>${memResult.memName}님 환영합니다.</b></p>
-				
-				<br>
-				
-				<ul class="updateli" >
-				  <li><a href="updateForm.do"><b>개인정보 수정</b></a></li>
-				  <li><a href="updatePWForm.do">비밀번호 변경</a></li>
-				  <li><a href="updateImg.do">저장한 이미지 확인</a></li>
-				  <li><a href="updateResult.do">취향 결과 확인</a></li>
-
-				</ul>
-			</div>
-
-		<div class="card " style=" width:70%">
-			
-			<div class="card-header"><h3 class="text-center">개인 정보 수정</h3></div>
-			<div class="card-body">
-				<form action="update.do" method="POST" class="form container">
-					<!-- CSRF token -->
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<input type="hidden" id="memID" name="memID" value="${ memResult.memID }" />
-					<input type="hidden" id="memPassword" name="memPassword" /> <!-- memPassword1와 memPassword2가 일치해야만이 memPassword가 될 것 -->
+			<div class="mb-5"><h2 class="text-center">마이 페이지</h2></div>
+			<div class="row">
+				<div class="col-4 bg-white">
 					<input type="hidden" name=memName id="memName" value="${ memResult.memName }" />
-					
-					<table class="table table-bordered text-center">
-						<tbody>
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memPassword1">사용자 비밀번호</label></th>
-								<td class="align-middle">
-									<input type="password" onkeyup="passwordCheck()" name=memPassword1 id="memPassword1" value=""class="form-control" maxlength=20 placeholder="비밀번호를 입력하세요."  />
-								</td>
-							</tr>
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memPassword2">사용자 비밀번호 확인</label></th>
-								<td class="align-middle">
-									<input type="password" onkeyup="passwordCheck()" name=memPassword2 id="memPassword2" class="form-control" maxlength=20 placeholder="비밀번호를 확인하세요."  />
-								</td>
-							</tr>
-							
+					<img class="img d-block m-auto" style="width:150px;" src="${ contextPath }/resources/images/common/person.png" alt="profile default">
+					<p class="mt-3 mb-4 text-center fs-4 fw-bold ">${memResult.memName}님 환영합니다.</p>
+					<ul class="updateList m-auto" style="width:200px;">
+						<li class="mb-3 ps-2 on"><a href="updateForm.do" class="link-dark text-decoration-none">개인정보 수정</a></li>
+						<li class="mb-3 ps-2"><a href="updatePWForm.do" class="link-dark text-decoration-none">비밀번호 변경</a></li>
+						<li class="mb-3 ps-2"><a href="updateImg.do" class="link-dark text-decoration-none">저장한 이미지 확인</a></li>
+						<li class="mb-3 ps-2"><a href="updateResult.do" class="link-dark text-decoration-none">취향 결과 확인</a></li>
+					</ul>
+				</div>
+				<div class="col-7" style="background-color: rgb(241,241, 241);">
+					<div class="container m-auto" style="width:70%;">
+						<form action="update.do" method="POST" class="form container needs-validation mt-4">
 						
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memNickname">닉네임</label></th>
-								<td class="align-middle">
-									<input type="text" name=memNickname id="memNickname" value="${ memResult.memNickname }" class="form-control" maxlength=20  placeholder="닉네임을 입력하세요." required="required" />
-								</td>
-							</tr>
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memPhone">핸드폰 번호</label></th>
-								<td class="align-middle">
-									<input type="text" name=memPhone id="memPhone" value="${ memResult.memPhone }" class="form-control" placeholder="핸드폰 번호를 입력하세요." required="required" />
-								</td>
-							</tr>
+						<legend class="mb-4 fs-4 text-center">개인 정보 수정</legend>
+							<!-- CSRF token -->
+							<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
+							<input type="hidden" id="memID" name="memID" value="${ memResult.memID }" />
+							<input type="hidden" id="memName" name="memName" value="${ memResult.memName }" />
+							<input type="hidden" id="memPassword" name="memPassword" /> <!-- memPassword1와 memPassword2가 일치해야만이 memPassword가 될 것 -->
 							
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memEmail">이메일</label></th>
-								<td class="align-middle">
-									<input type="email" name=memEmail id="memEmail" value="${ memResult.memEmail }" class="form-control" maxlength=150 placeholder="이메일을 입력하세요." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="required" />
-								</td>
-							</tr>
-							
-							<tr>
-								<th class="align-middle" style="width:150px;"><label for="memAddress">주소</label></th>
-								<td class="align-middle">
-									<input type="text" readonly="readonly" name=memAddress id="memAddress" value="${ memResult.memAddress }" class="form-control" maxlength=150 placeholder="주소를 입력하세요." required="required" />
-								</td>
-							</tr>
-							
-							<tr>
-							<th class="align-middle" style="width:150px;"><label for="memAddress">주소 변경하기</label></th>
-							<td><div class="row mb-3">
-					    
-					    <input type="hidden" name="memAddress" id="memAddress" />
-					    <div class="col-sm-10">
-					    	<div class="row mb-2">
-					    		<div class="col-auto">
-					    			<button type="button" class="btn btn-sm btn-light align-top" onclick="addressFullFill()">우편번호 찾기</button>
-					    		</div>
-					    		<div class="col-auto">
-					    			<input type="text" id="postcode" class="form-control"  placeholder="우편번호" />
-					    		</div>
-					    	</div>
-					    	<div class="row">
-					    		<div class="col-auto">
-					    			<input type="text" onchange="addressFill()" id="address" class="form-control" style="width: 300px;" placeholder="주소"  />
-					    		</div>
-					    		<div class="col-auto">
-					    			<input type="text" onchange="addressFill()" id="detailAddress" class="form-control" placeholder="상세주소" />
-					    		</div>
-					    		<div class="col-auto">
-					    			<input type="text" "
-    width: 150px;
-" id="extraAddress" class="form-control" placeholder="참고항목" />
-					    		</div>
-					    	</div>
-					    </div>
+							<div class="row mb-3">
+								<label for="memNickname" class="col-sm-3 col-form-label">닉네임</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="memNickname" name="memNickname" value="${ memResult.memNickname }" placeholder="공백 없이 한글, 영어, 숫자로 10자 미만의 닉네임만 가능합니다." pattern="^[ㄱ-ㅎ가-힣a-zA-Z0-9]+" maxlength=10 required />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label for="memPhone" class="col-sm-3 col-form-label">휴대폰 번호</label>
+								<div class="col-sm-9">
+									<input type="text" value="${ memResult.memPhone }" class="form-control" id="memPhone" name="memPhone" placeholder="000-0000-0000" pattern="^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$"  required />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label for="memEmail" class="col-sm-3 col-form-label">이메일</label>
+								<div class="col-sm-9">
+									<input type="email" value="${ memResult.memEmail }"  class="form-control" id="memEmail" name="memEmail" placeholder="email@email.com" pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$" required />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label for="memAddress" class="col-sm-3 col-form-label">현재 주소</label>
+								<div class="col-sm-9">
+									<div class="col-auto">
+										<input type="text" name="memAddress" id="memAddress" class="form-control" readonly="readonly" value="${memResult.memAddress}"/>
+									</div>
+								</div>
+							</div>	
+							<div class="row mb-3">
+								<label for="memAddress" class="col-sm-3 col-form-label">변경할 주소</label>
+								<input type="hidden" name="memAddress" id="memAddress" />
+								<div class="col-sm-9">
+									<div class="row mb-2">
+										<div class="col-auto">
+											<button type="button" class="btn btn-info align-top" onclick="addressFullFill()">우편번호 찾기</button>
+										</div>
+										<div class="col-auto">
+											<input type="text" id="postcode" class="form-control"  placeholder="우편번호" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-auto">
+											<input type="text" onchange="addressFill()" id="address" class="form-control" style="width:300px;" placeholder="주소" />
+										</div>
+										<div class="col-auto">
+											<input type="text" onchange="addressFill()" id="detailAddress" class="form-control" placeholder="상세주소" />
+										</div>
+										<div class="col-auto">
+											<input type="text" style="
+					width: 150px;
+					" id="extraAddress" class="form-control" placeholder="참고항목" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-10 offset-sm-2 text-center">
+									<button type="submit" class="btn btn-primary">수정하기</button>
+									<button type="reset" class="btn btn-warning">취소하기</button>
+								</div>
+							</div>
+						</form>
 					</div>
-					</td>
-							</tr>
-							
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="2" class="pull-right">
-									<p id="passMessage" class="text-center fw-bold"></p>
-									<button type="submit" class="btn btn-info">수정하기</button>
-									<button type="reset" class="btn btn-secondary">취소하기</button>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</form>
+				</div>
 			</div>
 		</div>
-			</div>
-	</div>
 	</div>
 	</section>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </main>
+
 <!-- The Modal -->
 <div class="modal fade" id="myModal"><!-- animation : fade -->
   <div class="modal-dialog">
@@ -213,9 +174,8 @@ function addressFill(){
     </div>
   </div>
 </div>
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+<script type="text/javascript">
     function addressFullFill() {
         new daum.Postcode({
             oncomplete: function(data) {

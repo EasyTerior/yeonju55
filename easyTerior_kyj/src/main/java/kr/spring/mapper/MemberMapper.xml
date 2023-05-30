@@ -20,7 +20,13 @@
 	
 	<update id="update" parameterType="kr.spring.entity.Member">
 		UPDATE member 
-		SET memPassword=#{memPassword}, memName=#{memName}, memNickname=#{memNickname}, memPhone=#{memPhone}, memEmail=#{memEmail}, memAddress=#{memAddress}, memProfile=#{memProfile}
+		SET memName=#{memName}, memNickname=#{memNickname}, memPhone=#{memPhone}, memEmail=#{memEmail}, memAddress=#{memAddress}, memProfile=#{memProfile}
+		WHERE memID = #{memID}
+	</update>
+	
+	<update id="updatePW" parameterType="kr.spring.entity.Member">
+		UPDATE member 
+		SET memPassword=#{memPassword}
 		WHERE memID = #{memID}
 	</update>
 
