@@ -276,7 +276,7 @@
 			});
 		}
 		
-		// 회원가입 페이지 이동 : 요청 URL - /leaveForm.do
+		// 회원탈퇴 페이지 이동 : 요청 URL - /leaveForm.do
 				@RequestMapping("/leaveForm.do")
 				public String leaveForm() {
 					return "member/leaveForm"; // do 뺄 것.
