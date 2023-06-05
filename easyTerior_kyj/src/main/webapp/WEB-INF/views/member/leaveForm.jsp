@@ -30,17 +30,14 @@
 	<section class="fixed-top container-fluid overflow-auto" style="height:100%;margin:137px 0 0;padding:56px 0 0 100px;">
 	<div class="container-fluid" style="min-height:100vh;margin-bottom: 200px;">
 		<div class="container-fluid">
-			<div class="mb-5"><h2 class="text-center">로그인</h2></div>
+			<div class="mb-5"><h2 class="text-center">회원 탈퇴</h2></div>
+			
 			<div class="container m-auto" style="width:70%;">
-				<form action="login.do" method="POST" class="form container needs-validation">
-					<!-- CSRF token -->
-					<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
-					<div class="row mb-3" style="width:600px;margin:0 auto;">
-					    <label for="memID" class="col-sm-2 col-form-label">아이디</label>
-					    <div class="col-sm-7">
-					        <input type="text" placeholder="아이디를 입력해주세요." pattern="^[a-zA-Z0-9]+" maxlength=20 class="form-control" id="memID" name="memID" />
-					    </div>
-					</div>
+				<form>
+				<input type="hidden" name="memID" value="${ memResult.memID }" />
+				<p class="fs-5 fw-bold text-center">${ memResult.memID }님 정말로 탈퇴하시겠습니까?</p>
+				<p class="text-center">탈퇴하시려면 비밀번호를 입력해주세요.</p>
+				
 					<div class="row mb-3 position-relative" style="width:600px;margin:0 auto;">
 					    <label for="memPassword1" class="col-sm-2 col-form-label">비밀번호</label>
 					    <div class="col-sm-7">
@@ -48,14 +45,12 @@
 					    </div>
 					    <div class="valid-tooltip"></div>
 					</div>
-					<div class="row mb-3">
-					    <div class="m-auto offset-sm-2 text-center">
-					        <button type="submit" class="btn btn-primary">로그인하기</button>
-					        <button type="reset" class="btn btn-warning">취소하기</button>
+					<div class="m-auto offset-sm-2 text-center">
+					        <button type="submit" class="btn btn-primary">탈퇴하기</button>
 					    </div>
-					</div>
 				</form>
 			</div>
+			
 		</div>
 	</div>
 	</section>

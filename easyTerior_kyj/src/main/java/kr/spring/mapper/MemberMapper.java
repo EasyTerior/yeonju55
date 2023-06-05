@@ -20,7 +20,9 @@ public interface MemberMapper {
 
 	public Member getMember(String memID);
 
-	public int updatePW(Member mem);
+	//public int updatePW(Member mem);
+
+	public int updateProfile(Member mem);
 	
 	
 	
