@@ -24,6 +24,6 @@ public interface MemberMapper {
 
 	public int updateProfile(Member mem);
 	
-	
+	public void memberDelete(Member mem);
 	
 }

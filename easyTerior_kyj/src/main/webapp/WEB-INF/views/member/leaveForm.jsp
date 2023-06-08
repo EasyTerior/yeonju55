@@ -10,6 +10,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script type="text/javascript">
+
+//CSRF 토큰의 이름과 값 설정 -> 비동기 방식은 csrfHeaderName으로 넣음
+var csrfHeaderName = "${ _csrf.headerName }"; // 문자열 형태로
+var csrfTokenValue = "${ _csrf.token }";
+
+
 	$(document).ready(function(){
 		// 회원가입 후 modal 표시
 		if(${ not empty msgType}){
@@ -21,7 +27,7 @@
 	});
 	
 </script>
-<title>loginForm.do</title>
+<title>leaveForm.do</title>
 </head>
 <body>
 <main class="main">
@@ -33,13 +39,15 @@
 			<div class="mb-5"><h2 class="text-center">회원 탈퇴</h2></div>
 			
 			<div class="container m-auto" style="width:70%;">
-				<form>
+				<form action="memberDelete.do" method="POST">
+				    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				
 				<input type="hidden" name="memID" value="${ memResult.memID }" />
 				<p class="fs-5 fw-bold text-center">${ memResult.memID }님 정말로 탈퇴하시겠습니까?</p>
 				<p class="text-center">탈퇴하시려면 비밀번호를 입력해주세요.</p>
 				
 					<div class="row mb-3 position-relative" style="width:600px;margin:0 auto;">
-					    <label for="memPassword1" class="col-sm-2 col-form-label">비밀번호</label>
+					    <label for="memPassword" class="col-sm-2 col-form-label">비밀번호</label>
 					    <div class="col-sm-7">
 					        <input type="password" placeholder="비밀번호를 입력해주세요." name="memPassword" id="memPassword" class="form-control" />
 					    </div>

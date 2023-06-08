@@ -13,7 +13,8 @@ CREATE TABLE member(
 );
 
 -- DROP TABLE member;
-SELECT * FROM member;
+
+select * from member
 
 -- admin 계정 추가?
 INSERT INTO member(memIdx, memID, memPassword, memName, memNickname, memPhone, memEmail, memAddress, memProfile)
